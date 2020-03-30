@@ -23,5 +23,5 @@ Route::post('user', 'Api\UserController@create')->name('user.create');
 //
 // DISCIPLINE
 //
-// DISCIPLINE - Index of all disciplines
-Route::get('disciplines', 'Api\DisciplineController@index')->name('discipline.index');
+// DISCIPLINE - Index all disciplines
+Route::get('discipline', 'Api\DisciplineController@index')->name('discipline.index');
