@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'discipline_id',
+        'name', 
+        'email',
+        'role', 
+        'password',
+        'function',
+        'agency',
+        'country',
+        'idea_url', 
+        'ip', 
     ];
 
     /**
@@ -25,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     /**
@@ -33,7 +42,15 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    // protected $casts = [
+    //     'email_verified_at' => 'datetime',
+    // ];
+
+    /**
+     * Get the users associated with the discipline.
+     */
+    public function discipline()
+    {
+        return $this->belongsTo('App\Discipline');
+    }
 }
