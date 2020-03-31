@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Discipline;
+use App\Mail\ReviewerCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class UserController extends Controller
 {
@@ -43,6 +46,8 @@ class UserController extends Controller
         ]);
 
         $user->save();
+
+        Mail::to($user)->send(new ReviewerCreated($user));
 
         return response()->json([
             'message' => 'User created.'
