@@ -29,7 +29,7 @@ class DisciplineSeeder extends Seeder
             ],
             3 => 
             [
-                'name'                  =>  'Copywriting/scriptwriting',
+                'name'                  =>  'Copywriting',
                 'created_at'            =>  Carbon::now(),
                 'updated_at'            =>  Carbon::now(),
             ],
@@ -41,13 +41,13 @@ class DisciplineSeeder extends Seeder
             ],
             5 => 
             [
-                'name'                  =>  'PR',
+                'name'                  =>  'Film',
                 'created_at'            =>  Carbon::now(),
                 'updated_at'            =>  Carbon::now(),
             ],
             6 => 
             [
-                'name'                  =>  'Social',
+                'name'                  =>  'PR',
                 'created_at'            =>  Carbon::now(),
                 'updated_at'            =>  Carbon::now(),
             ]
