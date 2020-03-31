@@ -19,7 +19,7 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string',
-            'email' => 'required|email:rfc,dns',
+            'email' => 'required|email:rfc,dns|unique:users',
             'role' => 'required|string|in:creative,reviewer',
             'function' => 'required|string',
             'agency' => 'required|string',
