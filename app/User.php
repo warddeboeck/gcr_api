@@ -52,4 +52,14 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Discipline');
     }
+
+    public function reviewers()
+    {
+        return $this->belongsToMany('App\User', 'reviewer_creative', 'creative_id', 'reviewer_id')->withTimestamps();
+    }
+
+    public function creatives()
+    {
+        return $this->belongsToMany('App\User', 'reviewer_creative', 'reviewer_id', 'creative_id')->withTimestamps();
+    }
 }
