@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use BeyondCode\Mailbox\InboundEmail;
+use BeyondCode\Mailbox\Facades\Mailbox;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Mailbox::from('test@globalcreativereview.com', function (InboundEmail $email) {
+            Log::debug("LUKT DIT?");
+        });
     }
 }
