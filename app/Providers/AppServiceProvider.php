@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Mailbox::to('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
             $sender = $email->from();
-            $user = User::where('email', '$sender')->first();
+            $user = User::where('email', $sender)->first();
             if ($user->role == 'creative') {
                 $reviewers = $user->reviewers()->where('idea_uuid', $idea_code)->get();
                 foreach ($reviewers as $reviewer) {
