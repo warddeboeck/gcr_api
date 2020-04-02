@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('mailable', function () {
+//     return new App\Mail\ReviewerCreated();
+// });
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    'middleware' => 'auth.basic'
+], function() {
+    //
+    // DATA
+    //
+    // DATA - Download .csv all reviewers
+    Route::get('data/reviewers', 'Api\DataController@downloadReviewers')->name('data.reviewers');
+    // DATA - Download .csv all creatives
+    Route::get('data/creatives', 'Api\DataController@downloadCreatives')->name('data.creatives');
+});
+
+Route::any('/', function () {
+    return Redirect::away('https://supermachine.be');
 });

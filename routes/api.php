@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//
+// USER
+//
+// USER - Create reviewer
+Route::post('user', 'Api\UserController@create')->name('user.create');
+
+//
+// DISCIPLINE
+//
+// DISCIPLINE - Index all disciplines
+Route::get('discipline', 'Api\DisciplineController@index')->name('discipline.index');

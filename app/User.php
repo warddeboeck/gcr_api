@@ -16,7 +16,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'discipline_id',
+        'name', 
+        'email',
+        'role', 
+        'password',
+        'function',
+        'agency',
+        'country',
+        'idea_url', 
+        'ip', 
     ];
 
     /**
@@ -25,15 +34,22 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
+     * @return bool
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    public function isAdmin()
+    {
+        return ($this->role == 'super') ? true : false;
+    }
+
+    /**
+     * Get the users associated with the discipline.
+     */
+    public function discipline()
+    {
+        return $this->belongsTo('App\Discipline');
+    }
 }
