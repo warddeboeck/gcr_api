@@ -34,14 +34,20 @@ class AppServiceProvider extends ServiceProvider
             if ($user->role == 'creative') {
                 $reviewers = $user->reviewers()->where('idea_uuid', $idea_code)->get();
                 foreach ($reviewers as $reviewer) {
-                    $email->forward($reviewer->email);
+                    Mail::html($email->html(), function (\Illuminate\Mail\Message $message) use($email, $reviewer, $idea_code) {
+                        $message->to($reviewer->email);
+                        $message->subject($email->subject());
+                        $message->from($idea_code.'@idea.globalcreativereview.com');
+                        $message->attach($email->attachments());
+                    });
                 }
             } elseif ($user->role == 'reviewer') {
                 $creative = $user->creatives()->where('idea_uuid', $idea_code)->first();
-                Mail::html($email->html(), function (\Illuminate\Mail\Message $message) use($creative, $idea_code) {
+                Mail::html($email->html(), function (\Illuminate\Mail\Message $message) use($email, $creative, $idea_code) {
                     $message->to($creative->email);
-                    $message->subject('[p1901] This is from an inbound email: ' . now()->toDayDateTimeString());
+                    $message->subject($email->subject());
                     $message->from($idea_code.'@idea.globalcreativereview.com');
+                    $message->attach($email->attachments());
                 });
             }
         });
