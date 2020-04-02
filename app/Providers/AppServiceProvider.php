@@ -33,9 +33,9 @@ class AppServiceProvider extends ServiceProvider
             if ($user->role == 'creative') {
                 $reviewers = $user->reviewers()->where('idea_uuid', $idea_code)->get();
                 foreach ($reviewers as $reviewer) {
-                    $user->idea_url = $reviewer->name;
+                    $user->idea_url = $reviewer->email;
                     $user->save();
-                    $email->forward($reviewer->email);
+                    $email->forward($reviewer);
                 }
 
             // } elseif ($user->role == 'reviewer') {
