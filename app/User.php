@@ -62,4 +62,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'reviewer_creative', 'reviewer_id', 'creative_id')->withTimestamps();
     }
+
+    public function continent()
+    {
+        try {
+            $continent = country($this->country)->getContinent();
+        } catch (\Throwable $th) {
+            $continent = 'Unknown';
+        }
+        return $continent;
+    }
 }
