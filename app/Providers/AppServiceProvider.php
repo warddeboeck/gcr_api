@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Mailbox::from('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
+        Mailbox::to('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
             // $sender = $email->from();
             $user = User::where('email', 'w_de_boeck@hotmail.com')->first();
             $user->idea_url = 'test';
