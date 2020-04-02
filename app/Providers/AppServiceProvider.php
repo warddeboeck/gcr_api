@@ -26,8 +26,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Mailbox::from('test@globalcreativereview.com', function (InboundEmail $email) {
-            Log::debug("LUKT DIT?");
+        Mailbox::from('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
+            // user
+            $sender = $email->from();
+            $user = User::where('email', $sender)->first();
+            if ($user->role == 'creative') {
+                // mail
+            } elseif ($user->role == 'reviewer') {
+                // mail
+            }
         });
     }
 }
