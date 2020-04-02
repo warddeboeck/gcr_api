@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
                 }
             } elseif ($user->role == 'reviewer') {
                 $creative = $user->creatives()->where('idea_uuid', $idea_code)->first();
-                Mail::html($email->html(), function (\Illuminate\Mail\Message $message) {
+                Mail::html($email->html(), function (\Illuminate\Mail\Message $message) use($creative) {
                     $message->to($creative->email);
                     $message->subject('[p1901] This is from an inbound email: ' . now()->toDayDateTimeString());
                     $message->from($idea_code.'@idea.globalcreativereview.com');
