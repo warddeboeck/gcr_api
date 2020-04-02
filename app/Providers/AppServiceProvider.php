@@ -41,7 +41,7 @@ class AppServiceProvider extends ServiceProvider
             // } elseif ($user->role == 'reviewer') {
             //     $creative = $user->creatives()->where('idea_uuid', $idea_code)->get();
             //     $email->forward($creative->email);
-            // }
+            }
         });
     }
 }
