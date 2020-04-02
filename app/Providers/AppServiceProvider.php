@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use BeyondCode\Mailbox\InboundEmail;
 use BeyondCode\Mailbox\Facades\Mailbox;
+use App\User;
 
 class AppServiceProvider extends ServiceProvider
 {
