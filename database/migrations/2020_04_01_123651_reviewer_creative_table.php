@@ -17,6 +17,7 @@ class ReviewerCreativeTable extends Migration
             $table->increments('id');
             $table->integer('reviewer_id')->unsigned();
             $table->integer('creative_id')->unsigned();
+            $table->string('idea_uuid');
             $table->timestamps();
         });
     }
