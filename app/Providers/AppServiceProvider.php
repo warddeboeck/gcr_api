@@ -38,7 +38,6 @@ class AppServiceProvider extends ServiceProvider
                         $message->to($reviewer->email);
                         $message->subject($email->subject());
                         $message->from($idea_code.'@idea.globalcreativereview.com');
-                        $message->attach($email->attachments());
                     });
                 }
             } elseif ($user->role == 'reviewer') {
@@ -47,8 +46,15 @@ class AppServiceProvider extends ServiceProvider
                     $message->to($creative->email);
                     $message->subject($email->subject());
                     $message->from($idea_code.'@idea.globalcreativereview.com');
-                    $message->attach($email->attachments());
                 });
+                $otherReviewers = $creative->reviewers()->where('idea_uuid', $idea_code)->where('email', '!=', $user->email)->get();
+                foreach ($otherReviewers as $reviewer) {
+                    Mail::html($email->html(), function (\Illuminate\Mail\Message $message) use($email, $reviewer, $idea_code) {
+                        $message->to($reviewer->email);
+                        $message->subject($email->subject());
+                        $message->from($idea_code.'@idea.globalcreativereview.com');
+                    });
+                }
             }
         });
     }
