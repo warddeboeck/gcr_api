@@ -15,10 +15,20 @@ class ReviewerCreativeTable extends Migration
     {
         Schema::create('reviewer_creative', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('reviewer_id')->unsigned();
-            $table->integer('creative_id')->unsigned();
+            $table->unsignedBigInteger('reviewer_id');
+            $table->unsignedBigInteger('creative_id');
             $table->string('idea_uuid');
             $table->timestamps();
+
+            $table->foreign('reviewer_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
+            
+            $table->foreign('creative_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');     
         });
     }
 
