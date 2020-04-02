@@ -49,7 +49,7 @@ class UserController extends Controller
         $user->save();
         
         if ($user->role == "reviewer") {
-            // Mail::to($user)->send(new ReviewerCreated($user));
+            Mail::to($user)->send(new ReviewerCreated($user));
         } elseif ($user->role == "creative") {
             // Mail::to($user)->send(new CreativeCreated($user));
         }
