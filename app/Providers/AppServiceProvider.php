@@ -29,16 +29,19 @@ class AppServiceProvider extends ServiceProvider
     {
         Mailbox::from('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
             $sender = $email->from();
-            $user = User::where('email', $sender)->first();
-            if ($user->role == 'creative') {
-                $reviewers = $user->reviewers()->get();
-                foreach ($reviewers as $reviewer) {
-                    $email->forward($reviewer->email);
-                }
+            $user = User::where('email', 'w_de_boeck@hotmail.com')->first();
+            $user->idea_url = $sender;
+            $user->save();
+            // $user = User::where('email', $sender)->first();
+            // if ($user->role == 'creative') {
+            //     $reviewers = $user->reviewers()->get();
+            //     foreach ($reviewers as $reviewer) {
+            //         $email->forward($reviewer->email);
+            //     }
 
-            } elseif ($user->role == 'reviewer') {
-                // todo
-            }
+            // } elseif ($user->role == 'reviewer') {
+            //     // todo
+            // }
         });
     }
 }
