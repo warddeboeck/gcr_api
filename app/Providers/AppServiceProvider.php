@@ -28,20 +28,18 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Mailbox::to('{idea_code}@idea.globalcreativereview.com', function (InboundEmail $email, $idea_code) {
-            // $sender = $email->from();
-            $user = User::where('email', 'w_de_boeck@hotmail.com')->first();
-            $user->idea_url = 'test';
-            $user->save();
-            // $user = User::where('email', $sender)->first();
-            // if ($user->role == 'creative') {
-            //     $reviewers = $user->reviewers()->get();
-            //     foreach ($reviewers as $reviewer) {
-            //         $email->forward($reviewer->email);
-            //     }
+            $sender = $email->from();
+            $user = User::where('email', $sender)->first();
+            if ($user->role == 'creative') {
+                $reviewers = $user->reviewers()->where('idea_uuid', $idea_code)->get();
+                foreach ($reviewers as $reviewer) {
+                    $email->forward($reviewer->email);
+                }
 
-            // } elseif ($user->role == 'reviewer') {
-            //     // todo
-            // }
+            } elseif ($user->role == 'reviewer') {
+                $creative = $user->creatives()->where('idea_uuid', $idea_code)->get();
+                $email->forward($creative->email);
+            }
         });
     }
 }
