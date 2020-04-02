@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 
 use BeyondCode\Mailbox\InboundEmail;
 use BeyondCode\Mailbox\Facades\Mailbox;
+use Illuminate\Support\Facades\Mail;
 use App\User;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,7 +38,11 @@ class AppServiceProvider extends ServiceProvider
                 }
             } elseif ($user->role == 'reviewer') {
                 $creative = $user->creatives()->where('idea_uuid', $idea_code)->first();
-                $email->forward($creative->email);
+                Mail::html($email->html(), function (\Illuminate\Mail\Message $message) {
+                    $message->to($creative->email);
+                    $message->subject('[p1901] This is from an inbound email: ' . now()->toDayDateTimeString());
+                    $message->from($idea_code.'@idea.globalcreativereview.com');
+                });
             }
         });
     }
