@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
                 foreach ($reviewers as $reviewer) {
                     $user->idea_url = $reviewer->email;
                     $user->save();
-                    $email->forward($reviewer);
+                    $email->forward($reviewer->email);
                 }
 
             // } elseif ($user->role == 'reviewer') {
