@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
                     $email->forward($reviewer->email);
                 }
             } elseif ($user->role == 'reviewer') {
-                $creative = $user->creatives()->where('idea_uuid', $idea_code)->get();
+                $creative = $user->creatives()->where('idea_uuid', $idea_code)->first();
                 $email->forward($creative->email);
             }
         });
