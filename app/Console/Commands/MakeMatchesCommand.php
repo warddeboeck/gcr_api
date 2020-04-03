@@ -38,47 +38,66 @@ class MakeMatchesCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+
+        public function handle()
     {
         // get all creatives with no matches yet
-        $creatives = User::where('role', 'creative')->has('reviewers', 0)->orderBy('created_at', 'asc')->get();
+        $creatives = User::where('role', 'creative')->where('deleted_at', NULL)->has('reviewers', 0)->orderBy('created_at', 'asc')->get();
 
         foreach ($creatives as $creative) {
-            // get reviewers other disciplines
-            $possibleReviewers = User::where('role', 'reviewer')->get();
 
-            // get reviewers other continents
-            $possibleReviewers = $possibleReviewers->filter(function($model) use($creative) {
-                return $model->continent() != $creative->continent();
-            });
-
-            // get reviewers with less than 3 matches within 24h
-            $possibleReviewers = $possibleReviewers->filter(function($model){
-                return $model->creatives()->wherePivot('created_at','>', Carbon::now()->subDay())->count() < 3;
-            });
+            // get all reviewers
+            $possibleReviewers = User::where('role', 'reviewer')->where('deleted_at', NULL)->get();
 
             $reviewers = collect();
-            $displineIdFilter = array($creative->discipline_id);
 
-            for ($i=0; $i < 3; $i++) { 
-                $possibleReviewers = $possibleReviewers->filter(function($model) use($displineIdFilter){
-                    return $model->where('discipline_id', '!=', $displineIdFilter);
+            $allPossibleReviewers = $possibleReviewers;
+            $continentFilter = array($creative->continent());
+
+            for ($i=0; $i < 3; $i++) {
+
+              // filter out reviewers from same or already used continent
+              $possibleReviewers = $possibleReviewers->filter(function($model) use($continentFilter){
+                return !in_array($model->continent(), $continentFilter);
+              });
+
+              $reviewer = false;
+
+              for ($j=1; $j < 4; $j++) {
+
+                // get all reviewers with $j creatives assigned
+                $selectedReviewers = $possibleReviewers->filter(function($model) use($j){
+                  return $model->creatives()->wherePivot('created_at','>', Carbon::now()->subDay())->count() < $j;
                 });
-                $reviewer = $possibleReviewers->random(1)->first();
-                array_push($displineIdFilter, $reviewer->discipline_id);
-                $possibleReviewers = $possibleReviewers->filter(function($model) use($reviewer) {
-                    return $model->continent() != $reviewer->continent();
-                });
-                if ($possibleReviewers->count() == 0) {
-                    break;
+                if ($selectedReviewers->count() > 0) {
+                  $reviewer = $possibleReviewers->random(1)->first();
+                  array_push($continentFilter, $reviewer->continent());
+                  break;
                 }
-                $reviewers->add($reviewer);
+
+              }
+
+              // check if we were able to find an eligible review in previous loop
+              if (!$reviewer) {
+                // log that were unable to find a match!
+                break;
+              }
+
+              $reviewers->add($reviewer);
             }
-            $characters = '23456789ABCDEFGHIJKLMNPQRSTUVWXYZabcefghijkmnopqrstuvwxyz';
-            $idea_uuid = substr(str_shuffle($characters), 0, 8);
+
+            if ($reviewers->count() != 3) {
+              break;
+            }
+
+            $characters = '23456789abcefghijkmnopqrstuvwxyz';
+            $idea_uuid = substr(str_shuffle($characters), 0, 12);
+
             foreach ($reviewers as $reviewer) {
                 $creative->reviewers()->attach($reviewer, ['idea_uuid' => $idea_uuid]);
             }
+            Mail::to($creative)->send(new ReviewersMatchedToCreative($creative, $idea_uuid));
         }
+
     }
 }
