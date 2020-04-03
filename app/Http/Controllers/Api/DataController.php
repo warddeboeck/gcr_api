@@ -23,7 +23,7 @@ class DataController extends Controller
 
             $csvExporter->build($reviewers->sortBy('created_at'), [
                 'name' => 'Name',
-                'email' => 'Email',
+                // 'email' => 'Email',
                 'function' => 'Function',
                 'agency' => 'Agency',
                 'country' => 'Country',
@@ -52,7 +52,7 @@ class DataController extends Controller
 
             $csvExporter->build($creatives->sortBy('created_at'), [
                 'name' => 'Name',
-                'email' => 'Email',
+                // 'email' => 'Email',
                 'function' => 'Function',
                 'agency' => 'Agency',
                 'country' => 'Country',
