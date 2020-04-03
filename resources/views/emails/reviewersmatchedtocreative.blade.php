@@ -379,7 +379,9 @@
                         @endforeach
                         </p>
                         <p>Be sure to reply to this email with a clear and concise presentation or explanation of your idea. If you need more inspiration on how to enter your idea, please check our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a>.</p> 
-                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 125@idea.globalcreativereview.com. If you reply from your personal email address to this email adress, it will be sent through the group email address to the receivers.</p> 
+                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative receives a unique email address. Yours is <a href="mailto:{{$idea_uuid}}@idea.globalcreativereview.com">{{$idea_uuid}}@idea.globalcreativereview.com</a>.</p>
+
+                        <p>If you reply from your personal email address to this email adress, it will be sent through the group email address to the reviewer.</p> 
                         <p>It’s up to you to decide how you take it from there. Either you send your feedback through mail. Or you connect through video call. Through a phone call.   Whatever you are comfortable with. Or whatever you have time for.</p> 
                         <p>Be clear. Be constructive. Be helpful.</br>You know what to do.</p> 
                         <p>Let’s make this happen.</p>
