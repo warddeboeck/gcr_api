@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use App\User;
 use Carbon\Carbon;
+use App\Mail\ReviewersMatchedToCreative;
 
 class MakeMatchesCommand extends Command
 {
