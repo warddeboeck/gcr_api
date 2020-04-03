@@ -353,7 +353,7 @@
     </style>
   </head>
   <body class="">
-    <span class="preheader">Let’s keep this very simple.</span>
+    <span class="preheader">Thank you for your time. </span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -371,9 +371,11 @@
                       <td>
                         <h1>Thank you for your time.</h1>
                         <h2>#GlobalCreativeReview</h2>
-                        <p>You will receive a maximum of 3 ideas per day, from creatives all around the world. Together with two other creative leaders from different continents, you can give your feedback.</p>  
-                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 125@idea.globalcreativereview.com. If you reply from your personal email address to this email adress, it will be sent through the group email address to the receivers.</p>  
-                        <p>It’s up to you to decide how you take it from there. Either you send your feedback through mail. Or you connect through video call. Through a phone call. Whatever you are comfortable with. Or whatever you have time for.</p> 
+                        <p>We promised to get back to you with more info about the matchmaking flow.</p>  
+                        <p>Let’s keep this very simple.</p>  
+                        <p>You will receive a maximum of 3 ideas per day, from creatives all around the world. Together with two other creative leaders from different continents, you can give your feedback.</p> 
+                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 123456@idea.globalcreativereview.com. If you reply from your personal email address to this group address, it will be sent to the other members of your team.</p> 
+                        <p>It’s up to you to decide how you take it from there. Either you send your feedback through our group mail address. Or your personal mail. Or you connect through video call. Through a phone call. Whatever you are comfortable with. Or whatever you have time for.</p>
                         <p>Be clear. Be constructive. Be helpful.</br>You know what to do.</p> 
                         <p>Let’s make this happen.</p>
                         <p>Love,</br>the team.</p> 
