@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
     // $creative = App\User::where('role', 'creative')->first();
     // return new App\Mail\ReviewersMatchedToCreative($creative, 'Scg9LwWG');
     // return new App\Mail\ReviewerCreated();
+    // return new App\Mail\UpdateEarlyReviewer();
 // });
 
 /*
