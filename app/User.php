@@ -5,10 +5,11 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -51,5 +52,25 @@ class User extends Authenticatable
     public function discipline()
     {
         return $this->belongsTo('App\Discipline');
+    }
+
+    public function reviewers()
+    {
+        return $this->belongsToMany('App\User', 'reviewer_creative', 'creative_id', 'reviewer_id')->withTimestamps();
+    }
+
+    public function creatives()
+    {
+        return $this->belongsToMany('App\User', 'reviewer_creative', 'reviewer_id', 'creative_id')->withTimestamps();
+    }
+
+    public function continent()
+    {
+        try {
+            $continent = country($this->country)->getContinent();
+        } catch (\Throwable $th) {
+            $continent = 'Unknown';
+        }
+        return $continent;
     }
 }

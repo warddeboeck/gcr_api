@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('mailable', function () {
-//     return new App\Mail\ReviewerCreated();
+    // $creative = App\User::where('role', 'creative')->first();
+    // return new App\Mail\ReviewersMatchedToCreative($creative, 'Scg9LwWG');
+    // return new App\Mail\ReviewerCreated();
+    // return new App\Mail\UpdateEarlyReviewer();
 // });
 
 /*
