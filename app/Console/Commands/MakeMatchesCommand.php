@@ -41,7 +41,7 @@ class MakeMatchesCommand extends Command
     public function handle()
     {
         // get all creatives with no matches yet
-        $creatives = User::where('role', 'creative')->has('reviewers', 0)->get();
+        $creatives = User::where('role', 'creative')->has('reviewers', 0)->orderBy('created_at', 'asc')->get();
 
         foreach ($creatives as $creative) {
             // get reviewers other disciplines
@@ -57,25 +57,27 @@ class MakeMatchesCommand extends Command
                 return $model->creatives()->wherePivot('created_at','>', Carbon::now()->subDay())->count() < 3;
             });
 
+            $reviewers = collect();
+            $displineIdFilter = array($creative->discipline_id);
+
+            for ($i=0; $i < 3; $i++) { 
+                $possibleReviewers = $possibleReviewers->filter(function($model) use($displineIdFilter){
+                    return $model->where('discipline_id', '!=', $displineIdFilter);
+                });
+                $reviewer = $possibleReviewers->random(1)->first();
+                array_push($displineIdFilter, $reviewer->discipline_id);
+                $possibleReviewers = $possibleReviewers->filter(function($model) use($reviewer) {
+                    return $model->continent() != $reviewer->continent();
+                });
+                if ($possibleReviewers->count() == 0) {
+                    break;
+                }
+                $reviewers->add($reviewer);
+            }
             $characters = '23456789ABCDEFGHIJKLMNPQRSTUVWXYZabcefghijkmnopqrstuvwxyz';
             $idea_uuid = substr(str_shuffle($characters), 0, 8);
-            if ($possibleReviewers->count() > 2) {
-                // $reviewers = collect();
-                // $reviewer1 = $possibleReviewers->random(1);
-                // $reviewers->add($reviewer1);
-                // try {
-                //     $reviewer2 = $possibleReviewers->where('continent','!=', $reviewer1->continent())->random(1);
-                // } catch (\Throwable $th) {
-                //     return;
-                // }
-                // $reviewer3 = $possibleReviewers->random(1);
-                $reviewers = $possibleReviewers->random(3);
-                $creative->reviewers()->attach($reviewers, ['idea_uuid' => $idea_uuid]);
-
-                // mail to creative
-                // Mail::to($creative)->send(new ReviewersMatchedToCreative($creative, $idea_uuid));
-            } else {
-                return;
+            foreach ($reviewers as $reviewer) {
+                $creative->reviewers()->attach($reviewer, ['idea_uuid' => $idea_uuid]);
             }
         }
     }
