@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Thank you for your time.</title>
+    <title>Welcome to the #GlobalCreativeReview</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -369,11 +369,18 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h1>Thank you for your time.</h1>
+                        <h1>Welcome to the</h1>
                         <h2>#GlobalCreativeReview</h2>
-                        <p>You will receive a maximum of 3 ideas per day, from creatives all around the world. Together with two other creative leaders from different continents, you can give your feedback.</p>  
-                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 125@idea.globalcreativereview.com. If you reply from your personal email address to this email adress, it will be sent through the group email address to the receivers.</p>  
-                        <p>It’s up to you to decide how you take it from there. Either you send your feedback through mail. Or you connect through video call. Through a phone call. Whatever you are comfortable with. Or whatever you have time for.</p> 
+                        <p>Let’s keep this very simple.</p>  
+                        <p>You are now linked with 3 creative leaders from different continents!</p>  
+                        <p>
+                        @foreach ($creative->reviewers as $reviewer)
+                        {{$reviewer->name}} - {{$reviewer->agency}} - {{$reviewer->function}} - {{country($reviewer->country)->getName()}}</br>
+                        @endforeach
+                        </p>
+                        <p>Be sure to reply to this email with a clear and concise presentation or explanation of your idea. If you need more inspiration on how to enter your idea, please check our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a>.</p> 
+                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 125@idea.globalcreativereview.com. If you reply from your personal email address to this email adress, it will be sent through the group email address to the receivers.</p> 
+                        <p>It’s up to you to decide how you take it from there. Either you send your feedback through mail. Or you connect through video call. Through a phone call.   Whatever you are comfortable with. Or whatever you have time for.</p> 
                         <p>Be clear. Be constructive. Be helpful.</br>You know what to do.</p> 
                         <p>Let’s make this happen.</p>
                         <p>Love,</br>the team.</p> 
@@ -394,11 +401,11 @@
                   <td class="content-block">
                   <p>Make it global.</br>
                   Share to your network.</p>
-                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ env('FRONTEND_URL') }}.&quote=Is%20your%20UN%20idea%20a%20truly%20universal%20idea%3F%20I%E2%80%99m%20offering%20my%20feedback.%20Send%20in%20your%20ideas%20on%20{{ env('FRONTEND_URL') }}%20%23GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/facebook.png"/></a>
-                  <a target="_blank" href="https://twitter.com/intent/tweet?url={{ env('FRONTEND_URL') }}&text=Is%20your%20UN%20idea%20a%20truly%20universal%20idea%3F%20I%E2%80%99m%20offering%20my%20feedback.%20Send%20in%20your%20ideas%20on%20{{ env('FRONTEND_URL') }}%20%23GlobalCreativeReview&original_referer=https%3A%2F%2Ftwitter.com%2Fshare%3Furl%3D{{ env('FRONTEND_URL') }}%252F%26text%3DIs%2520your%2520UN%2520idea%2520a%2520truly%2520universal%2520idea%253F%2520I%25E2%2580%2599m%2520offering%2520my%2520feedback.%2520Send%2520in%2520your%2520ideas%2520on%2520{{ env('FRONTEND_URL') }}%252F%2520%2523GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/twitter.png"/></a>
-                  <a target="_blank" href="https://www.linkedin.com/shareArticle/?url={{ env('FRONTEND_URL') }}&mini=true"><img class="share-img share-img-linkedin" src="{{ env('FRONTEND_URL') }}static/icons/linkedin.png"/></a>
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fglobalcreativereview.com%2F&quote=This%20platform%20connects%20creatives%20with%20creative%20leaders%20to%20get%20feedback%20on%20UN%20ideas.%20Join%20as%20a%20reviewer%20or%20share%20your%20idea%20here.%20%23GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/facebook.png"/></a>
+                  <a target="_blank" href="https://twitter.com/intent/tweet?text=This%20platform%20connects%20creatives%20with%20creative%20leaders%20to%20get%20feedback%20on%20UN%20ideas.%20Join%20as%20a%20reviewer%20or%20share%20your%20idea%20here.%20%23GlobalCreativeReview&url=https%3A%2F%2Fglobalcreativereview.com%2F&original_referer=https%3A%2F%2Ftwitter.com%2Fshare%3Furl%3Dhttps%253A%252F%252Fglobalcreativereview.com%252F%26text%3DThis%2520platform%2520connects%2520creatives%2520with%2520creative%2520leaders%2520to%2520get%2520feedback%2520on%2520UN%2520ideas.%2520Join%2520as%2520a%2520reviewer%2520or%2520share%2520your%2520idea%2520here.%2520%2523GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/twitter.png"/></a>
+                  <a target="_blank" href="https://www.linkedin.com/shareArticle/?url=https%3A%2F%2Fglobalcreativereview.com%2F&mini=true"><img class="share-img share-img-linkedin" src="{{ env('FRONTEND_URL') }}static/icons/linkedin.png"/></a>
                   <p class="more-info">If you have any questions you can always visit our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a> or e-mail us at <a href="mailto:info@globalcreativereview.com">info@globalcreativereview.com</a>.</p>
-                  <p>If you want to unsubscribe as a reviewer, <a href="mailto:info@globalcreativereview.com?SUBJECT=Unsubscribe Reviewer">click here</a>.</p>
+                  <p>If you want to unsubscribe as a creative, <a href="mailto:info@globalcreativereview.com?SUBJECT=Unsubscribe Creative">click here</a>.</p>
                   </td>
                 </tr>
               </table>

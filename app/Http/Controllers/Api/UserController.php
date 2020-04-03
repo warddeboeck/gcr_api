@@ -50,9 +50,7 @@ class UserController extends Controller
         
         if ($user->role == "reviewer") {
             Mail::to($user)->send(new ReviewerCreated($user));
-        } elseif ($user->role == "creative") {
-            // Mail::to($user)->send(new CreativeCreated($user));
-        }
+        } 
 
         return response()->json([
             'message' => 'User created.'

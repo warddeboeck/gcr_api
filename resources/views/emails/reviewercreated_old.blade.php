@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Thank you for your time.</title>
+    <title>Stay Tuned, Ideas Are Coming.</title>
     <style>
       /* -------------------------------------
           GLOBAL RESETS
@@ -97,7 +97,7 @@
         .footer p,
         .footer span,
         .footer a {
-          font-size: 16px;
+          font-size: 20px;
           text-align: center; 
       }
 
@@ -134,7 +134,7 @@
       ul,
       ol {
         font-family: serif;
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 500;
         margin: 0;
         margin-bottom: 15px; 
@@ -147,7 +147,7 @@
       }
 
       a {
-        color: #00f;
+        color: #3498db;
         text-decoration: underline; 
       }
 
@@ -346,14 +346,10 @@
         margin-right:0px;
       }
 
-      .more-info {
-        margin-top:30px;
-      }
-
     </style>
   </head>
   <body class="">
-    <span class="preheader">Let’s keep this very simple.</span>
+    <span class="preheader">First of all: thank you for your time and generosity.</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -369,13 +365,13 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td>
-                        <h1>Thank you for your time.</h1>
+                        <h1>Stay tuned, ideas are coming.</h1>
                         <h2>#GlobalCreativeReview</h2>
-                        <p>You will receive a maximum of 3 ideas per day, from creatives all around the world. Together with two other creative leaders from different continents, you can give your feedback.</p>  
-                        <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative, will receive a unique email address like 125@idea.globalcreativereview.com. If you reply from your personal email address to this email adress, it will be sent through the group email address to the receivers.</p>  
-                        <p>It’s up to you to decide how you take it from there. Either you send your feedback through mail. Or you connect through video call. Through a phone call. Whatever you are comfortable with. Or whatever you have time for.</p> 
-                        <p>Be clear. Be constructive. Be helpful.</br>You know what to do.</p> 
-                        <p>Let’s make this happen.</p>
+                        <p>First of all: thank you for your time and generosity.</p>  
+                        <p>We do realize everyone is busy and we really appreciate you making time to review UN ideas.</p>  
+                        <p>We are currently building a database of creative leaders.</p> 
+                        <p>We’ll keep you posted when you will start receiving ideas.</p> 
+                        <p>Let’s make this happen.</p> 
                         <p>Love,</br>the team.</p> 
                       </td>
                     </tr>
@@ -397,8 +393,6 @@
                   <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ env('FRONTEND_URL') }}.&quote=Is%20your%20UN%20idea%20a%20truly%20universal%20idea%3F%20I%E2%80%99m%20offering%20my%20feedback.%20Send%20in%20your%20ideas%20on%20{{ env('FRONTEND_URL') }}%20%23GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/facebook.png"/></a>
                   <a target="_blank" href="https://twitter.com/intent/tweet?url={{ env('FRONTEND_URL') }}&text=Is%20your%20UN%20idea%20a%20truly%20universal%20idea%3F%20I%E2%80%99m%20offering%20my%20feedback.%20Send%20in%20your%20ideas%20on%20{{ env('FRONTEND_URL') }}%20%23GlobalCreativeReview&original_referer=https%3A%2F%2Ftwitter.com%2Fshare%3Furl%3D{{ env('FRONTEND_URL') }}%252F%26text%3DIs%2520your%2520UN%2520idea%2520a%2520truly%2520universal%2520idea%253F%2520I%25E2%2580%2599m%2520offering%2520my%2520feedback.%2520Send%2520in%2520your%2520ideas%2520on%2520{{ env('FRONTEND_URL') }}%252F%2520%2523GlobalCreativeReview"><img class="share-img" src="{{ env('FRONTEND_URL') }}static/icons/twitter.png"/></a>
                   <a target="_blank" href="https://www.linkedin.com/shareArticle/?url={{ env('FRONTEND_URL') }}&mini=true"><img class="share-img share-img-linkedin" src="{{ env('FRONTEND_URL') }}static/icons/linkedin.png"/></a>
-                  <p class="more-info">If you have any questions you can always visit our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a> or e-mail us at <a href="mailto:info@globalcreativereview.com">info@globalcreativereview.com</a>.</p>
-                  <p>If you want to unsubscribe as a reviewer, <a href="mailto:info@globalcreativereview.com?SUBJECT=Unsubscribe Reviewer">click here</a>.</p>
                   </td>
                 </tr>
               </table>
