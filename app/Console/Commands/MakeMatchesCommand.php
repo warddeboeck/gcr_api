@@ -90,8 +90,8 @@ class MakeMatchesCommand extends Command
               break;
             }
 
-            $characters = '23456789abcefghijkmnopqrstuvwxyz';
-            $idea_uuid = substr(str_shuffle($characters), 0, 12);
+            $characters = '0123456789';
+            $idea_uuid = substr(str_shuffle($characters), 0, 8);
 
             foreach ($reviewers as $reviewer) {
                 $creative->reviewers()->attach($reviewer, ['idea_uuid' => $idea_uuid]);
