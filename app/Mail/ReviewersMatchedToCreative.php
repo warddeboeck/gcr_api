@@ -38,7 +38,7 @@ class ReviewersMatchedToCreative extends Mailable
      */
     public function build()
     {
-        return $this->from('info@globalcreativereview.com', '#GlobalCreativeReview')
+        return $this->from($this->idea_uuid.'@globalcreativereview.com', '#GlobalCreativeReview idea '.$this->idea_uuid)
                 ->subject('Welcome to the #GlobalCreativeReview')
                 ->view('emails.reviewersmatchedtocreative');
     }
