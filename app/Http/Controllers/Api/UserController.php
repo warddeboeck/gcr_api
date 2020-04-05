@@ -52,6 +52,11 @@ class UserController extends Controller
             Mail::to($user)->send(new ReviewerCreated($user));
         } 
 
+        if ($user->country == "UK") {
+            $user->country = "GB";
+            $user->save();
+        }
+
         return response()->json([
             'message' => 'User created.'
         ], 201);

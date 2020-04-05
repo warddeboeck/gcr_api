@@ -146,6 +146,10 @@
           margin-left: 5px; 
       }
 
+      ul {
+        padding-left: 0px;
+      }
+
       a {
         color: #00f;
         text-decoration: underline; 
@@ -373,12 +377,12 @@
                         <h2>#GlobalCreativeReview</h2>
                         <p>Let’s keep this very simple.</p>  
                         <p>You are now linked with 3 creative leaders from different continents!</p>  
-                        <p>
+                        <ul>
                         @foreach ($creative->reviewers as $reviewer)
-                        {{$reviewer->name}} - {{$reviewer->agency}} - {{$reviewer->function}} - {{country($reviewer->country)->getName()}}</br>
+                        <li><strong>{{$reviewer->name}}</strong> - {{$reviewer->agency}} - {{$reviewer->function}} - {{country($reviewer->country)->getName()}}</li>
                         @endforeach
-                        </p>
-                        <p>Be sure to reply to this email with a clear and concise presentation or explanation of your idea. If you need more inspiration on how to enter your idea, please check our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a>.</p> 
+                        </ul>
+                        <p>Be sure to reply to this email with a clear and concise presentation or explanation of your idea. Currently we do not support attachments, so makes sure if you want to send files to provide them with an external tool like Dropbox, Drive, Wetransfer,... . If you need more inspiration on how to enter your idea, please check our <a href="{{ env('FRONTEND_URL') }}faq">FAQ page</a>.</p> 
                         <p><strong>Your personal email addresses will not be shared.</strong> However, your name will be given in the group conversation. Each team, consisting of 3 reviewers and 1 creative receives a unique email address. <br/>Yours is <a href="mailto:{{$idea_uuid}}@idea.globalcreativereview.com">{{$idea_uuid}}@idea.globalcreativereview.com</a>.</p>
 
                         <p>If you reply from your personal email address to this email adress, it will be sent through the group email address to the reviewer.</p> 
