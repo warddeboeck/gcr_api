@@ -56,6 +56,7 @@ class DataController extends Controller
                 'function' => 'Function',
                 'agency' => 'Agency',
                 'country' => 'Country',
+                'continent' => 'Continent',
                 'discipline.name' => 'Discipline',
                 'idea_url' => 'URL to idea',
                 'created_at' => 'Joined on'
