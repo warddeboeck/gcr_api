@@ -18,7 +18,7 @@ class DataController extends Controller
             $reviewers = User::where('role', 'reviewer')->get();
 
             $csvExporter->beforeEach(function ($reviewer) {
-
+                $reviewer->continent = $reviewer->continent();
             });
 
             $csvExporter->build($reviewers->sortBy('created_at'), [
@@ -27,6 +27,7 @@ class DataController extends Controller
                 'function' => 'Function',
                 'agency' => 'Agency',
                 'country' => 'Country',
+                'continent' => 'Continent',
                 'discipline.name' => 'Discipline',
                 'created_at' => 'Joined on'
             ])->download();
@@ -47,7 +48,7 @@ class DataController extends Controller
             $creatives = User::where('role', 'creative')->get();
 
             $csvExporter->beforeEach(function ($creative) {
-
+                $creative->continent = $creative->continent();
             });
 
             $csvExporter->build($creatives->sortBy('created_at'), [
@@ -56,6 +57,7 @@ class DataController extends Controller
                 'function' => 'Function',
                 'agency' => 'Agency',
                 'country' => 'Country',
+                'continent' => 'Continent',
                 'discipline.name' => 'Discipline',
                 'idea_url' => 'URL to idea',
                 'created_at' => 'Joined on'

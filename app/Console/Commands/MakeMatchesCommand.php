@@ -68,7 +68,7 @@ class MakeMatchesCommand extends Command
 
                 // get all reviewers with $j creatives assigned
                 $selectedReviewers = $possibleReviewers->filter(function($model) use($j){
-                  return $model->creatives()->wherePivot('created_at','>', Carbon::now()->subDay())->count() < $j;
+                  return $model->creatives()->wherePivot('created_at','>', Carbon::now()->subWeek())->count() < $j;
                 });
                 if ($selectedReviewers->count() > 0) {
                   $reviewer = $possibleReviewers->random(1)->first();
